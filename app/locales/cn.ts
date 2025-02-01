@@ -1,33 +1,30 @@
 import { getClientConfig } from "../config/client";
 import { SubmitKey } from "../store/config";
-import { SAAS_CHAT_UTM_URL } from "@/app/constant";
+//import { SAAS_CHAT_UTM_URL } from "@/app/constant";
 
 const isApp = !!getClientConfig()?.isApp;
 
 const cn = {
-  WIP: "该功能仍在开发中……",
+  WIP: "开发中……",
   Error: {
     Unauthorized: isApp
-      ? `😆 对话遇到了一些问题，不用慌:
-       \\ 1️⃣ 想要零配置开箱即用，[点击这里立刻开启对话 🚀](${SAAS_CHAT_UTM_URL})
-       \\ 2️⃣ 如果你想消耗自己的 OpenAI 资源，点击[这里](/#/settings)修改设置 ⚙️`
-      : `😆 对话遇到了一些问题，不用慌:
-       \ 1️⃣ 想要零配置开箱即用，[点击这里立刻开启对话 🚀](${SAAS_CHAT_UTM_URL})
-       \ 2️⃣ 如果你正在使用私有部署版本，点击[这里](/#/auth)输入访问秘钥 🔑
-       \ 3️⃣ 如果你想消耗自己的 OpenAI 资源，点击[这里](/#/settings)修改设置 ⚙️
+      ? `😆 对话遇到了一些问题：
+       \\ 1️⃣ 如果你想使用自己的 API 资源，点击[这里](/#/settings)修改设置 ⚙️`
+      : `😆 对话遇到了一些问题：
+       \ 1️⃣ 如果你还没有填写登录密码，请点击[这里](/#/auth)输入访问秘钥 🔑
+       \ 2️⃣ 如果你想使用自己的 API，点击[这里](/#/settings)修改设置。API 仅保存在本地。 ⚙️
        `,
   },
   Auth: {
     Return: "返回",
     Title: "需要密码",
-    Tips: "管理员开启了密码验证，请在下方填入访问码",
-    SubTips: "或者输入你的 OpenAI 或 Google AI 密钥",
-    Input: "在此处填写访问码",
+    Tips: "请在下方填入密码",
+    SubTips: "如果不知道密码，也可以输入你的 OpenAI 或 Google AI 密钥",
+    Input: "在此处填写密码",
     Confirm: "确认",
     Later: "稍后再说",
-    SaasTips: "配置太麻烦，想要立即使用",
     TopTips:
-      "🥳 NextChat AI 首发优惠，立刻解锁 OpenAI o1, GPT-4o, Claude-3.5 等最新大模型",
+      "你现在看到的页面代表你需要填写密码 / 自己的 API",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
@@ -61,7 +58,7 @@ const cn = {
     },
     Commands: {
       new: "新建聊天",
-      newm: "从面具新建聊天",
+      newm: "从预设新建聊天",
       next: "下一个聊天",
       prev: "上一个聊天",
       clear: "清除上下文",
@@ -77,7 +74,7 @@ const cn = {
         dark: "深色模式",
       },
       Prompt: "快捷指令",
-      Masks: "所有面具",
+      Masks: "所有预设",
       Clear: "清除聊天",
       Settings: "对话设置",
       UploadImage: "上传图片",
@@ -87,16 +84,16 @@ const cn = {
     Input: (submitKey: string) => {
       var inputHints = `${submitKey} 发送`;
       if (submitKey === String(SubmitKey.Enter)) {
-        inputHints += "，Shift + Enter 换行";
+        inputHints += "；Shift + Enter 换行";
       }
-      return inputHints + "，/ 触发补全，: 触发命令";
+      return inputHints; // + "，/ 触发补全，: 触发命令";
     },
     Send: "发送",
     StartSpeak: "说话",
     StopSpeak: "停止",
     Config: {
       Reset: "清除记忆",
-      SaveAs: "存为面具",
+      SaveAs: "存为预设",
     },
     IsContext: "预设提示词",
     ShortcutKey: {
@@ -121,8 +118,8 @@ const cn = {
       SubTitle: "可以导出 Markdown 文本或者 PNG 图片",
     },
     IncludeContext: {
-      Title: "包含面具上下文",
-      SubTitle: "是否在消息中展示面具上下文",
+      Title: "包含预设上下文",
+      SubTitle: "是否在消息中展示预设上下文",
     },
     Steps: {
       Select: "选取",
@@ -259,18 +256,18 @@ const cn = {
 
       LocalState: "本地数据",
       Overview: (overview: any) => {
-        return `${overview.chat} 次对话，${overview.message} 条消息，${overview.prompt} 条提示词，${overview.mask} 个面具`;
+        return `${overview.chat} 次对话，${overview.message} 条消息，${overview.prompt} 条提示词，${overview.mask} 个预设`;
       },
       ImportFailed: "导入失败",
     },
     Mask: {
       Splash: {
-        Title: "面具启动页",
-        SubTitle: "新建聊天时，展示面具启动页",
+        Title: "预设启动页",
+        SubTitle: "新建聊天时，展示预设启动页",
       },
       Builtin: {
-        Title: "隐藏内置面具",
-        SubTitle: "在所有面具列表中隐藏内置面具",
+        Title: "隐藏内置预设",
+        SubTitle: "在所有预设列表中隐藏内置预设",
       },
     },
     Prompt: {
@@ -311,13 +308,6 @@ const cn = {
     },
 
     Access: {
-      SaasStart: {
-        Title: "使用 NextChat AI",
-        Label: "（性价比最高的方案）",
-        SubTitle:
-          "由 NextChat 官方维护, 零配置开箱即用，支持 OpenAI o1, GPT-4o, Claude-3.5 等最新大模型",
-        ChatNow: "立刻对话",
-      },
       AccessCode: {
         Title: "访问密码",
         SubTitle: "管理员已开启加密访问",
@@ -700,11 +690,11 @@ const cn = {
     },
   },
   Mask: {
-    Name: "面具",
+    Name: "预设",
     Page: {
-      Title: "预设角色面具",
+      Title: "预设",
       SubTitle: (count: number) => `${count} 个预设角色定义`,
-      Search: "搜索角色面具",
+      Search: "搜索预设",
       Create: "新建",
     },
     Item: {
@@ -717,7 +707,7 @@ const cn = {
     },
     EditModal: {
       Title: (readonly: boolean) =>
-        `编辑预设面具 ${readonly ? "（只读）" : ""}`,
+        `编辑预设 ${readonly ? "（只读）" : ""}`,
       Download: "下载预设",
       Clone: "克隆预设",
     },
@@ -742,8 +732,8 @@ const cn = {
         SubTitle: "启用之后可以自动折叠/展开过长的代码块",
       },
       Share: {
-        Title: "分享此面具",
-        SubTitle: "生成此面具的直达链接",
+        Title: "分享此预设",
+        SubTitle: "生成此预设的直达链接",
         Action: "复制链接",
       },
     },
@@ -753,8 +743,8 @@ const cn = {
     Skip: "直接开始",
     NotShow: "不再展示",
     ConfirmNoShow: "确认禁用？禁用后可以随时在设置中重新启用。",
-    Title: "挑选一个面具",
-    SubTitle: "现在开始，与面具背后的灵魂思维碰撞",
+    Title: "挑选一个预设",
+    SubTitle: "现在开始，与预设背后的灵魂思维碰撞",
     More: "查看全部",
   },
 
