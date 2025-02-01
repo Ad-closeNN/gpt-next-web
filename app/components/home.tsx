@@ -2,7 +2,7 @@
 
 require("../polyfill");
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, JSX } from "react";
 import styles from "./home.module.scss";
 
 import BotIcon from "../icons/bot.svg";
@@ -212,7 +212,7 @@ function Screen() {
     <div
       className={clsx(styles.container, {
         [styles["tight-container"]]: shouldTightBorder,
-        [styles["rtl-screen"]]: getLang() === "ar",
+        [styles["rtl-screen"]]: getLang() === "cn",
       })}
     >
       {renderContent()}
