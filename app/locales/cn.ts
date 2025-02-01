@@ -1,6 +1,6 @@
 import { getClientConfig } from "../config/client";
 import { SubmitKey } from "../store/config";
-//import { SAAS_CHAT_UTM_URL } from "@/app/constant";
+import { SAAS_CHAT_UTM_URL } from "@/app/constant";
 
 const isApp = !!getClientConfig()?.isApp;
 
@@ -9,7 +9,7 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? `😆 对话遇到了一些问题：
-       \\ 1️⃣ 如果你想使用自己的 API 资源，点击[这里](/#/settings)修改设置 ⚙️`
+       \\ 1️⃣ 如果你想使用自己的 API，点击[这里](/#/settings)修改设置 ⚙️`
       : `😆 对话遇到了一些问题：
        \ 1️⃣ 如果你还没有填写登录密码，请点击[这里](/#/auth)输入访问秘钥 🔑
        \ 2️⃣ 如果你想使用自己的 API，点击[这里](/#/settings)修改设置。API 仅保存在本地。 ⚙️
@@ -307,7 +307,7 @@ const cn = {
       NoAccess: "输入 API Key 或访问密码查看余额",
     },
 
-    Access: {
+    Access: {      
       AccessCode: {
         Title: "访问密码",
         SubTitle: "管理员已开启加密访问",
