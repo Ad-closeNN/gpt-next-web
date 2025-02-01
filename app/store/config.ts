@@ -42,13 +42,13 @@ export const DEFAULT_CONFIG = {
   lastUpdate: Date.now(), // timestamp, to merge state
 
   submitKey: SubmitKey.Enter,
-  avatar: "1f603",
-  fontSize: 14,
-  fontFamily: "",
-  theme: Theme.Auto as Theme,
+  avatar: "1f913",
+  fontSize: 16,
+  fontFamily: "HarmonyOS Sans SC",
+  theme: Theme.Dark, //Theme.Auto as Theme,
   tightBorder: !!config?.isApp,
-  sendPreviewBubble: true,
-  enableAutoGenerateTitle: true,
+  sendPreviewBubble: false,
+  enableAutoGenerateTitle: false,
   sidebarWidth: DEFAULT_SIDEBAR_WIDTH,
 
   enableArtifacts: true, // show artifacts config
