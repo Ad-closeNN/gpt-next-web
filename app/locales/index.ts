@@ -21,8 +21,8 @@ export type Lang = keyof typeof ALL_LANGS;
 export const AllLangs = Object.keys(ALL_LANGS) as Lang[];
 
 export const ALL_LANG_OPTIONS: Record<Lang, string> = {
-  cn: "简体中文",
-  gta: "繁體中文", // 是港台澳的意思，不要理解错了()
+  cn: "简体中文 / Simplified Chinese",
+  gta: "繁體中文 / Traditional Chinese", // 是港台澳的意思，不要理解错了()
   sorry: "Sorry, English and other languages are not available.", // 是港台澳的意思，不要理解错了()
 };
 
