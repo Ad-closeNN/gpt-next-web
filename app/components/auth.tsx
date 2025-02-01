@@ -116,7 +116,7 @@ export function AuthPage() {
           onClick={goChat}
         />
         <IconButton
-          text={Locale.Auth.SaasTips}
+          text={Locale.Auth.Later}
           onClick={() => {
             goSaas();
           }}
